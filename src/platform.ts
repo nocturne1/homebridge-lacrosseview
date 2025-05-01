@@ -125,7 +125,9 @@ export class LaCrosseViewPlatform implements DynamicPlatformPlugin {
 
   async discoverDevices(initial?: boolean) {
     try {
-      this.log.info('Discovering devices')
+      if (!this.config.disablePollingLogs) {
+        this.log.info('Discovering devices')
+      }
 
       const devices = await this.getDevices()
       const discoveredCacheUUIDs: string[] = []
